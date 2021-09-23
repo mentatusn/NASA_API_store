@@ -38,5 +38,13 @@ interface RetrofitApi {
         @Query("startDate") startDate: String,
     ): Call<List<SolarFlareResponseData>>
 
+    @GET("/planetary/earth/assets")
+    fun getLandscapeImageFromSputnik(
+        @Query("lon") lon: Float,
+        @Query("lat") lat: Float,
+        @Query("date") dateString: String,
+        @Query("dim") dim: Float,
+        @Query("api_key") apiKey: String
+    ): Call<SputnikServerResponseData>
 }
 
