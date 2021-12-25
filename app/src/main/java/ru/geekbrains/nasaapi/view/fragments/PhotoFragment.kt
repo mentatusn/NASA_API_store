@@ -95,8 +95,13 @@ class PhotoFragment: Fragment() {
                 binding.customImageView.load(url)
             }
             is AppState.SuccessMars -> {
-                val url = appState.serverResponseData.photos.first().imgSrc
-                binding.customImageView.load(url)
+                if(appState.serverResponseData.photos.isEmpty()){
+                    Snackbar.make(binding.root, "В этот день curiosity не сделал ни одного снимка", Snackbar.LENGTH_SHORT).show()
+                }else{
+                    val url = appState.serverResponseData.photos.first().imgSrc
+                    binding.customImageView.load(url)
+                }
+
             }
         }
     }
